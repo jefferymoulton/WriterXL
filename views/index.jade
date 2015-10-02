@@ -1,0 +1,44 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="description", content="")
+        meta(name="author", content="Jeffery A. Moulton")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        title= title
+
+        link(rel="stylesheet", href="/css/app.css")
+
+    body(role="document")
+        header.navbar.navbar-default.navbar-fixed-top
+            div.container
+                div.navbar-header
+                    button.navbar-toggle.collapse(data-toggle="collapse", data-target=".navbar-collapse", aria-expanded="false", aria-controls="navbar")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+
+                     a.navbar-brand(href="/")
+                        img(src="/img/logo.png")
+
+                div#navbar.navbar-collapse.collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a.active(href="/")
+                                span.glyphicon.glyphicon-home &nbsp;Home
+                        li
+                            a(href="/signup")
+                                span.glyphicon.glyphicon-user &nbsp;Sign Up
+                        li
+                            a(href="/login")
+                                span.glyphicon.glyphicon-log-in &nbsp;Log In
+                ///.nav-collapse
+
+        div.container.theme-showcase(role="main")
+            h1 Hi, I'm a duck
+
+        script(src="/bower_components/jquery/dist/jquery.min.js")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/js/app.js")

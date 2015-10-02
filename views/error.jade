@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        title Oops
+        style(rel="stylesheet", href="/css/app.less")
+    body
+        h1 Well we feel sheepish...
+        h2= message
+        p= error.status
+        p= error.stack
+
+        script(src="/bower_components/jquery/dist/jquery.min.js")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
