@@ -1,1 +1,0 @@
-$('#test').html("Hi, I'm a duck");
