@@ -60,14 +60,12 @@ html(lang="en", ng-app="wxlApp")
                 ///.nav-collapse
 
         div.container.theme-showcase(role="main")
-            p Hi, I'm a {{message}}
             div(ng-view)
 
         // [if lt IE 9]><script src="bower_components/es5-shim/es5-shim.js"></script><script src="bower_components/json3/lib/json3.min.js"></script><![endif]
 
-        script(src="/bower_components/jquery/dist/jquery.js")
-        script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
         script(src="/bower_components/angular/angular.js")
+        script(src="/bower_components/angular-bootstrap/ui-bootstrap.js")
         script(src="/bower_components/angular-route/angular-route.js")
 
         script(src="/js/wxl-app.js")

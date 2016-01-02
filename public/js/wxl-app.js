@@ -1,5 +1,6 @@
 var wxlApp = angular.module('wxlApp', [
     'ngRoute',
+    'ui.bootstrap',
     'wxlControllers'
 ]);
 
