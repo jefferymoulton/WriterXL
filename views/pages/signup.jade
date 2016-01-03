@@ -25,18 +25,20 @@ form(name="signupForm", role="form", ng-submit="signup()", novalidate, ng-contro
     div.form-group
         label(for="password") Password:
             span.required *
-        input#password.form-control(type="password", name="password", placeholder="Password", required, ng-model="registration.user.password", ng-minlength="6", ng-maxlength="20", compare-to="registration.user.password")
+        input#password.form-control(type="password", name="password", placeholder="Password", required, ng-model="registration.user.password", ng-minlength="6", ng-maxlength="20")
         span.help-block(ng-show="signupForm.password.$dirty && signupForm.password.$invalid")
             span.error(ng-show="signupForm.password.$error.required") Password is required.
             span.error(ng-show="signupForm.password.$error.minlength || signupForm.password.$error.maxlength") Password must be 6-20 characters long.
 
     div.form-group
-        label(for="repassword") Re-type Password:
+        label(for="confirmPassword") Confirm Password:
             span.required *
-        input#repassword.form-control(type="password", placeholder="Password", ng-model="registration.user.repassword")
+        input#confirmPassword.form-control(type="password", name="confirmPassword", placeholder="Password", required, ng-model="registration.user.confirmPassword", compare-to="registration.user.password")
+        div.help-block(ng-messages="signupForm.confirmPassword.$error", role="alert")
+            div(ng-message="compareTo") Passwords do not match.
 
     div.form-group
         button.btn.btn-default(type="submit", ng-disabled="signupForm.$invalid") Sign Up
 
-    // TODO: Change to ngMessages (https://docs.angularjs.org/api/ngMessages/directive/ngMessages or http://plnkr.co/edit/FipgiTUaaymm5Mk6HIfn?p=preview)
+    // TODO: Change to ngMessages like the confirm password (https://docs.angularjs.org/api/ngMessages/directive/ngMessages or http://plnkr.co/edit/FipgiTUaaymm5Mk6HIfn?p=preview)
 

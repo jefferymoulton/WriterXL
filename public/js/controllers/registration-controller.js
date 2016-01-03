@@ -7,12 +7,12 @@ wxlApp.controller('RegistrationCtrl', function ($scope) {
         lastName: "",
         email: "",
         password: "",
-        repassword: ""
+        confirmPassword: ""
     };
 
     $scope.signup = function() {
 
-        alert("Signing up... " + self.firstName + " " + self.lastName);
+        alert("Signing up... " + model.user.firstName + " " + model.user.lastName);
 
     };
 

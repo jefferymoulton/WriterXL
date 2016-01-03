@@ -50,14 +50,14 @@ html(lang="en", ng-app="wxlApp")
                                 span.caret
 
                             duv.dropdown-menu.padded-box(role="menu")
-                                form(role="form", ng-controller="UserCtrl as ctrl")
+                                form(role="form", ng-controller="LoginCtrl as login")
                                     div.form-group
                                         label.sr-only(for="email") E-mail Address
-                                        input#email.form-control(type="text", placeholder="agatha.cristie@writerxl.com", ng-bind="ctrl.email")
+                                        input#email.form-control(type="text", placeholder="agatha.cristie@writerxl.com", ng-bind="login.user.email")
 
                                     div.form-group
                                         label.sr-only(for="password") Password
-                                        input#password.form-control(type="password", placeholder="Password", ng-bind="ctrl.password")
+                                        input#password.form-control(type="password", placeholder="Password", ng-bind="login.user.password")
 
                                     div.checkbox
                                         label
@@ -73,4 +73,5 @@ html(lang="en", ng-app="wxlApp")
 
         script(src="/js/wxl-app.js")
         script(src="/js/controllers/navigation-controller.js")
+        script(src="/js/controllers/login-controller.js")
         script(src="/js/controllers/registration-controller.js")
