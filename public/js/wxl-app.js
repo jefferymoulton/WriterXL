@@ -1,18 +1,23 @@
 var wxlApp = angular.module('wxlApp', [
-    'ngRoute',
     'ui.bootstrap',
-    'wxlControllers'
+    'ui.router',
+    'ui.navbar',
+    'NavigationController'
 ]);
 
 wxlApp.config(
-    function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'pages/default',
-                controller: 'wxlDefautCtrl'
+    function ($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise("/home");
+
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: 'pages/home'
             })
-            .otherwise({
-                redirectTo: '/'
-            });
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'pages/signup'
+            })
     }
 );

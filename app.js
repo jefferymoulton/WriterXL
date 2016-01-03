@@ -13,7 +13,7 @@ var routes = require('./routes/index');
 var app = express();
 
 /*
-// Connect to mongodb
+// Database configuration
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
   mongoose.connect(config.get('db'), options);
@@ -23,7 +23,6 @@ connect();
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
 
-// Bootstrap models
 fs.readdirSync(__dirname + '/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
 });
@@ -33,9 +32,11 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
+if (app.get('env') === 'development') {
+    app.locals.pretty = true;
+}
 
-app.disable('etag');
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
