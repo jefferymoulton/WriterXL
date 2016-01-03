@@ -1,6 +1,4 @@
-var wxlControllers = angular.module('NavigationController', []);
-
-wxlControllers.controller('NavigationController', function ($scope, $log) {
+wxlApp.controller('NavigationCtrl', function ($scope, $log) {
 
     $scope.status = {
         isopen: false

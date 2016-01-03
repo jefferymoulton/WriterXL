@@ -1,3 +1,42 @@
 h1 Sign Up
-div
-    p If you are here then you clicked the signup button
+
+form(name="signupForm", role="form", ng-submit="signup()", novalidate, ng-controller="RegistrationCtrl as registration")
+    div.form-group
+        label(for="firstName") First Name:
+            span.required *
+        input#firstName.form-control(type="text", name="firstName", placeholder="Agatha", required, ng-model="registration.user.firstName")
+        span.help-block(ng-show="signupForm.firstName.$dirty && signupForm.firstName.$invalid")
+            span.error(ng-show="signupForm.firstName.$error.required") First name is required.
+
+    div.form-group
+        label(for="lastName") Last Name:
+            span.required *
+        input#lastName.form-control(type="text", name="lastName", placeholder="Christie", required, ng-model="registration.user.lastName")
+        span.help-block(ng-show="signupForm.lastName.$dirty && signupForm.lastName.$invalid") Last name is required.
+
+    div.form-group
+        label(for="email") Email Address:
+            span.required *
+        input#email.form-control(type="email", name="email", placeholder="E.g. agatha.christie@writerxl.com", required, ng-model="registration.user.email")
+        span.help-block(ng-show="signupForm.email.$dirty && signupForm.email.$invalid")
+            span.error(ng-show="signupForm.email.$error.required") Email is required.
+            span.errro(ng-show="signupForm.email.$error.email") Invalid email.
+
+    div.form-group
+        label(for="password") Password:
+            span.required *
+        input#password.form-control(type="password", name="password", placeholder="Password", required, ng-model="registration.user.password", ng-minlength="6", ng-maxlength="20", compare-to="registration.user.password")
+        span.help-block(ng-show="signupForm.password.$dirty && signupForm.password.$invalid")
+            span.error(ng-show="signupForm.password.$error.required") Password is required.
+            span.error(ng-show="signupForm.password.$error.minlength || signupForm.password.$error.maxlength") Password must be 6-20 characters long.
+
+    div.form-group
+        label(for="repassword") Re-type Password:
+            span.required *
+        input#repassword.form-control(type="password", placeholder="Password", ng-model="registration.user.repassword")
+
+    div.form-group
+        button.btn.btn-default(type="submit", ng-disabled="signupForm.$invalid") Sign Up
+
+    // TODO: Change to ngMessages (https://docs.angularjs.org/api/ngMessages/directive/ngMessages or http://plnkr.co/edit/FipgiTUaaymm5Mk6HIfn?p=preview)
+

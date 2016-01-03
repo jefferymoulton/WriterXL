@@ -1,8 +1,8 @@
 var wxlApp = angular.module('wxlApp', [
+    'ngMessages',
     'ui.bootstrap',
     'ui.router',
-    'ui.navbar',
-    'NavigationController'
+    'ui.navbar'
 ]);
 
 wxlApp.config(
@@ -21,3 +21,5 @@ wxlApp.config(
             })
     }
 );
+
+wxlApp.directive("compareTo", compareTo);
