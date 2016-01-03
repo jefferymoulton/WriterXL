@@ -16,8 +16,4 @@ wxlApp.controller('RegistrationCtrl', function ($scope) {
 
     };
 
-    self.login = function() {
-
-    };
-
 });
