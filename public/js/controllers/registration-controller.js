@@ -1,8 +1,8 @@
 wxlApp.controller('RegistrationCtrl', function ($scope) {
 
-    var model = this;
+    var self = this;
 
-    model.user = {
+    self.user = {
         firstName: "",
         lastName: "",
         email: "",
@@ -10,10 +10,19 @@ wxlApp.controller('RegistrationCtrl', function ($scope) {
         confirmPassword: ""
     };
 
-    $scope.signup = function() {
+    self.signup = function() {
 
-        alert("Signing up... " + model.user.firstName + " " + model.user.lastName);
+        alert("Signing up... " + self.user.firstName + " " + self.user.lastName);
+
+        // TODO: Do the signup.
 
     };
+
+    self.checkEmailAvailability = function() {
+
+        // TODO: Check if the email is already in use.
+        return true;
+
+    }
 
 });

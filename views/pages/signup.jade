@@ -1,34 +1,37 @@
 h1 Sign Up
 
-form(name="signupForm", role="form", ng-submit="signup()", novalidate, ng-controller="RegistrationCtrl as registration")
+form(name="signupForm", role="form", novalidate, ng-controller="RegistrationCtrl as registration", ng-submit="registration.signup()")
     div.form-group
         label(for="firstName") First Name:
             span.required *
         input#firstName.form-control(type="text", name="firstName", placeholder="Agatha", required, ng-model="registration.user.firstName")
-        span.help-block(ng-show="signupForm.firstName.$dirty && signupForm.firstName.$invalid")
-            span.error(ng-show="signupForm.firstName.$error.required") First name is required.
+        div.help-block(ng-messages="signupForm.firstName.$error")
+            div(ng-message="required") First name is required.
 
     div.form-group
         label(for="lastName") Last Name:
             span.required *
         input#lastName.form-control(type="text", name="lastName", placeholder="Christie", required, ng-model="registration.user.lastName")
-        span.help-block(ng-show="signupForm.lastName.$dirty && signupForm.lastName.$invalid") Last name is required.
+        div.help-block(ng-messages="signupForm.lastName.$error")
+            div(ng-message="required") Last name is required.
 
     div.form-group
         label(for="email") Email Address:
             span.required *
         input#email.form-control(type="email", name="email", placeholder="E.g. agatha.christie@writerxl.com", required, ng-model="registration.user.email")
-        span.help-block(ng-show="signupForm.email.$dirty && signupForm.email.$invalid")
-            span.error(ng-show="signupForm.email.$error.required") Email is required.
-            span.errro(ng-show="signupForm.email.$error.email") Invalid email.
+        div.help-block(ng-messages="signupForm.email.$error", role="alert")
+            div(ng-message="required") Email is required.
+            div(ng-message="email") Invalid email.
+        // TODO: Indicate if the email is already in use.
 
     div.form-group
         label(for="password") Password:
             span.required *
         input#password.form-control(type="password", name="password", placeholder="Password", required, ng-model="registration.user.password", ng-minlength="6", ng-maxlength="20")
-        span.help-block(ng-show="signupForm.password.$dirty && signupForm.password.$invalid")
-            span.error(ng-show="signupForm.password.$error.required") Password is required.
-            span.error(ng-show="signupForm.password.$error.minlength || signupForm.password.$error.maxlength") Password must be 6-20 characters long.
+        div.help-block(ng-messages="signupForm.password.$error", role="alert")
+            div(ng-message="required") Password is required.
+            div(ng-message="minlength") Password must be at least 6 characters long.
+            div(ng-message="maxlength") Password cannot be more than 20 characters long.
 
     div.form-group
         label(for="confirmPassword") Confirm Password:
