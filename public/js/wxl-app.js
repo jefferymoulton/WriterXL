@@ -8,8 +8,6 @@ var wxlApp = angular.module('wxlApp', [
 wxlApp.config(
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $locationProvider.html5Mode(true);
-
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
@@ -21,7 +19,12 @@ wxlApp.config(
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'pages/signup/signup.html'
-            })
+            });
+
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }
 );
 
