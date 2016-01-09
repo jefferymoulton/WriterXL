@@ -6,18 +6,21 @@ var wxlApp = angular.module('wxlApp', [
 ]);
 
 wxlApp.config(
-    function ($stateProvider, $urlRouterProvider) {
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise("/home");
+        $locationProvider.html5Mode(true);
+
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('home', {
-                url: '/home',
-                templateUrl: 'pages/home'
+                url: '/',
+                templateUrl: 'pages/home/home.html',
+                controller: 'HomeCtrl'
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'pages/signup'
+                templateUrl: 'pages/signup/signup.html'
             })
     }
 );

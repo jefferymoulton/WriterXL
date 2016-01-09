@@ -1,0 +1,64 @@
+<h1>Sign Up</h1>
+
+<form name="signupForm" role="form" novalidate ng-controller="RegistrationController as registration" ng-submit="registration.signup()">
+
+    <div class="form-group">
+        <label for="fname">
+            First Name:
+            <span class="required">*</span>
+        </label>
+        <input id="fname" name="firstName" type="text" class="form-control" placeholder="Agatha" required ng-model="registration.user.firstName">
+        <div class="help-block" role="alert" ng-messages="signupForm.firstName.$error">
+            <div ng-messages-include="messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lname">
+            Last Name:
+            <span class="required">*</span>
+        </label>
+        <input id="lname" name="lastName" type="text" class="form-control" placeholder="Christie" required ng-model="registration.user.lastName">
+        <div class="help-block" role="alert" ng-messages="signupForm.lastName.$error">
+            <div ng-messages-include="messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">
+            Email address:
+            <span class="required">*</span>
+        </label>
+        <input id="email" name="email" type="text" class="form-control" placeholder="agatha.christie@writerxl.com" required ng-model="registration.user.email">
+        <div class="help-block" role="alert" ng-messages="signupForm.email.$error">
+            <div ng-messages-include="messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">
+            Password:
+            <span class="required">*</span>
+        </label>
+        <input id="password" name="password" type="password" class="form-control" placeholder="Password" required ng-model="registration.user.password" ng-minlength="6" ng-maxlength="20">
+        <div class="help-block" role="alert" ng-messages="signupForm.password.$error">
+            <div ng-messages-include="messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="confirm">
+            Confirm Password:
+            <span class="required">*</span>
+        </label>
+        <input id="confirm" name="confirmPassword" type="password" class="form-control" placeholder="Password" required ng-model="registration.user.confirmPassword" compare-to="registration.user.password">
+        <div class="help-block" role="alert" ng-messages="signupForm.confirmPassword.$error">
+            <div ng-messages-include="messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" ng-disabled="signupForm.$invalid">Sign Up</button>
+    </div>
+
+</form>

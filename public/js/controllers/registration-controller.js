@@ -1,18 +1,10 @@
-wxlApp.controller('RegistrationCtrl', function ($scope) {
+wxlApp.controller('RegistrationController', function ($scope) {
 
     var self = this;
 
-    self.user = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-    };
-
     self.signup = function() {
 
-        alert("Signing up... " + self.user.firstName + " " + self.user.lastName);
+        console.log("Signing up... " + self.user.firstName + " " + self.user.lastName);
 
         // TODO: Do the signup.
 

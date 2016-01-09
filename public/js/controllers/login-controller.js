@@ -1,4 +1,4 @@
-wxlApp.controller('LoginCtrl', function ($scope) {
+wxlApp.controller('LoginController', function ($scope) {
 
     var model = this;
 

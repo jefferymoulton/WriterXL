@@ -1,4 +1,4 @@
-wxlApp.controller('NavigationCtrl', function ($scope, $log) {
+wxlApp.controller('NavigationController', function ($scope, $log) {
 
     $scope.status = {
         isopen: false

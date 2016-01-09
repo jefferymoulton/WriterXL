@@ -8,7 +8,7 @@ var express = require('express'),
 
 var favicon = require('serve-favicon');
 
-var routes = require('./routes/index');
+var routes = require('./routes/api');
 
 var app = express();
 
@@ -28,10 +28,6 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 });
 */
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 if (app.get('env') === 'development') {
     app.locals.pretty = true;
 }
@@ -49,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname + '/bower_components')));
 
 // Set up the routes
-app.use('/', routes);
+app.use('/api', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

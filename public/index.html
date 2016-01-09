@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wxlApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WriterXL</title>
+
+    <!--[If lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/bower_components/ui-navbar/release/css/ui-navbar.css">
+</head>
+<body role="document" ng-cloak>
+
+<header class="navbar navbar-default navbar-fixed-top" ng-conroller="NavigationController">
+    <div class="container">
+        <div clas="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" ng-init="navbarCollapsed = true" ng-click="navbarCollapsed = !navbarCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/">
+                <img src="img/wxl-logo.png" alt="WriterXL Logo">
+            </a>
+        </div>
+
+        <nav class="collapse navbar-collapse" ng-class="!navbarCollapsed && 'in'">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <a href="#signup">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Sign Up
+                    </a>
+                </li>
+
+                <li class="dropdown" uib-dropdown auto-close="disabled">
+                    <a class="dropdown-toggle" href="#" role="button" uib-dropdown-toggle>
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        Log In
+                        <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu padded-box" role="menu">
+                        <form role="form" name="loginForm" ng-controller="LoginController as loginCtrl">
+                            <div class="form-group">
+                                <label class="sr-only" for="email">Email Address</label>
+                                <input id="email" name="email" class="form-control" type="text" placeholder="Email Address" ng-bind="loginCtrl.user.email">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="password">Password</label>
+                                <input id="password" name="password" class="form-control" type="password" placeholder="Password" ng-bind="loginCtrl.user.password">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="rememberMe" name="rememberMe" type="checkbox" ng-bind="loginCtrl.user.rememberMe">
+                                    Remember Me
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" ng-click="loginCtrl.login">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container theme-showcase" role="main">
+
+    <div ui-view></div>
+
+</div>
+
+
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/bower_components/ui-navbar/release/js/ui-navbar.js"></script>
+
+<!--[if lt IE 9]><script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script><![endif]-->
+
+<script src="js/wxl-app.js"></script>
+<script src="js/controllers/login-controller.js"></script>
+<script src="js/controllers/navigation-controller.js"></script>
+<script src="js/controllers/registration-controller.js"></script>
+
+<script src="pages/home/home-controller.js"></script>
+
+</body>
+</html>
