@@ -1,13 +1,8 @@
 wxlApp.controller('LoginController', function ($scope) {
 
-    var model = this;
+    var self = this;
 
-    model.user = {
-        email: "",
-        password: ""
-    };
-
-    $scope.signup = function() {
+    self.login = function() {
 
         alert("Signing up... " + model.user.email + " " + model.user.password);
 

@@ -1,4 +1,5 @@
 var express = require('express'),
+    fs = require('fs'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
@@ -8,11 +9,11 @@ var express = require('express'),
 
 var favicon = require('serve-favicon');
 
-var routes = require('./routes/api');
+var routes = require('./routes');
+var api = require('./routes/api');
 
 var app = express();
 
-/*
 // Database configuration
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
@@ -26,11 +27,6 @@ mongoose.connection.on('disconnected', connect);
 fs.readdirSync(__dirname + '/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
 });
-*/
-
-if (app.get('env') === 'development') {
-    app.locals.pretty = true;
-}
 
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
@@ -41,11 +37,24 @@ app.use(cookieParser());
 
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    next();
+});
+
+//app.set('view engine', 'html');
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname + '/bower_components')));
 
 // Set up the routes
-app.use('/api', routes);
+app.use('/api', api);
+
+app.get('/[^\.]+$', function(req, res){
+    res.set('Content-Type', 'text/html').sendfile(__dirname + '/public/index.html');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

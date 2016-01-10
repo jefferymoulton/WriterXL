@@ -22,8 +22,7 @@ wxlApp.config(
             });
 
         $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
+            enabled: true
         });
     }
 );
