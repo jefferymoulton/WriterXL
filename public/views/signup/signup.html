@@ -1,0 +1,78 @@
+<h1>Sign Up</h1>
+
+<form name="signupForm" role="form" novalidate ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
+
+    <div class="form-group">
+        <label for="fname">
+            First Name:
+            <span class="required">*</span>
+        </label>
+        <input id="fname" name="firstName" type="text" class="form-control" placeholder="Agatha"
+               ng-model="signupCtrl.user.firstName"
+               ng-required="true">
+        <div class="help-block" role="alert" ng-messages="signupForm.firstName.$error">
+            <div ng-message="required">First name is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lname">
+            Last Name:
+            <span class="required">*</span>
+        </label>
+        <input id="lname" name="lastName" type="text" class="form-control" placeholder="Christie"
+               ng-model="signupCtrl.user.lastName"
+               ng-required="true">
+        <div class="help-block" role="alert" ng-messages="signupForm.lastName.$error">
+            <div ng-message="required">Last Name is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">
+            Email address:
+            <span class="required">*</span>
+        </label>
+        <input id="email" name="email" type="email" class="form-control" placeholder="agatha.christie@writerxl.com"
+               ng-model="signupCtrl.user.email"
+               ng-required="true">
+        <div class="help-block" role="alert" ng-messages="signupForm.email.$error">
+            <div ng-message="required">Email address is required.</div>
+            <div ng-message="email">Email address is invalid</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">
+            Password:
+            <span class="required">*</span>
+        </label>
+        <input id="password" name="password" type="password" class="form-control" placeholder="Password" maxlength="20"
+               ng-model="signupCtrl.user.password"
+               ng-minlength="6"
+               ng-maxlength="20"
+               ng-required="true">
+        <div class="help-block" role="alert" ng-messages="signupForm.password.$error">
+            <div ng-message="required">Password is required.</div>
+            <div ng-message="minlength, maxlength">Password must be between 6 and 20 characters long.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="confirm">
+            Confirm Password:
+            <span class="required">*</span>
+        </label>
+        <input id="confirm" name="confirmPassword" type="password" class="form-control" placeholder="Password" maxlength="20"
+               ng-model="signupCtrl.user.confirmPassword"
+               compare-to="signupCtrl.user.password">
+        <div class="help-block" role="alert" ng-messages="signupForm.confirmPassword.$error">
+            <div ng-message="compareTo">Passwords do not match.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" ng-disabled="signupForm.$invalid">Sign Up</button>
+    </div>
+
+</form>

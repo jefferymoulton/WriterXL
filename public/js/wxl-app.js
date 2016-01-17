@@ -13,12 +13,18 @@ wxlApp.config(
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'pages/home/home.html',
-                controller: 'HomeCtrl'
+                templateUrl: 'views/home/home.html',
+                controller: 'HomeController'
+            })
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'views/dashboard/dashboard.html',
+                controller: 'DashboardController'
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'pages/signup/signup.html'
+                templateUrl: 'views/signup/signup.html',
+                controller: 'SignupController'
             });
 
         $locationProvider.html5Mode({

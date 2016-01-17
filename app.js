@@ -11,6 +11,7 @@ var favicon = require('serve-favicon');
 
 var routes = require('./routes');
 var api = require('./routes/api');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use('/bower_components', express.static(path.join(__dirname + '/bower_compon
 
 // Set up the routes
 app.use('/api', api);
+app.use('/user', user);
 
 app.get('/[^\.]+$', function(req, res){
     res.set('Content-Type', 'text/html').sendfile(__dirname + '/public/index.html');

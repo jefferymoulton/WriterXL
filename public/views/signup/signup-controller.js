@@ -1,4 +1,4 @@
-wxlApp.controller('RegistrationController', function ($scope) {
+wxlApp.controller('SignupController', function ($scope) {
 
     var self = this;
 
