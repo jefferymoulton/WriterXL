@@ -19,5 +19,5 @@ dist
 /dao
 /db
 *node_modules
-*bower_components
+static/bower_components
 .DS_Store

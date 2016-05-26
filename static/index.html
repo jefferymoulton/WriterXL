@@ -14,12 +14,14 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" >
+
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="/bower_components/ui-navbar/release/css/ui-navbar.css">
+    <link rel="stylesheet" href="bower_components/ui-navbar/release/css/ui-navbar.css">
 </head>
 <body role="document" ng-cloak>
 
-<header class="navbar navbar-default navbar-fixed-top" ng-conroller="NavigationController">
+<header class="navbar navbar-default navbar-fixed-top" ng-controller="NavigationController as navCtrl">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" ng-init="navbarCollapsed = true" ng-click="navbarCollapsed = !navbarCollapsed">
@@ -37,45 +39,48 @@
         <nav class="collapse navbar-collapse" ng-class="!navbarCollapsed && 'in'">
             <ul class="nav navbar-nav navbar-right">
 
-                <li ng-show="!loginCtrl.isAuthenticated()">
+                <li ng-show="!authenticated">
                     <a ui-sref="signup" role="button">
                         <span class="glyphicon glyphicon-user"></span>
                         Sign Up
                     </a>
                 </li>
 
-                <li class="dropdown" ng-show="!loginCtrl.isAuthenticated()" uib-dropdown auto-close="disabled">
+                <li class="dropdown" ng-show="!authenticated" uib-dropdown auto-close="outsideClick">
                     <a class="dropdown-toggle" href="#" role="button" uib-dropdown-toggle>
                         <span class="glyphicon glyphicon-log-in"></span>
                         Log In
                         <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu padded-box" role="menu">
-                        <form role="form" name="loginForm" ng-controller="LoginController as loginCtrl">
+                    <div class="dropdown-menu col-md-5 padded-box" uib-dropdown-menu role="menu">
+                        <div class="alert alert-danger" ng-show="navCtrl.error">
+                            There was a problem logging in. Please try again.
+                        </div>
+                        <form role="form" name="loginForm" ng-submit="navCtrl.login()">
                             <div class="form-group">
                                 <label class="sr-only" for="email">Email Address</label>
-                                <input id="email" name="email" class="form-control" type="text" placeholder="Email Address" ng-bind="loginCtrl.user.email">
+                                <input id="email" name="email" class="form-control" type="text" placeholder="Email Address" ng-model="navCtrl.credentials.email">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="password">Password</label>
-                                <input id="password" name="password" class="form-control" type="password" placeholder="Password" ng-bind="loginCtrl.user.password">
+                                <input id="password" name="password" class="form-control" type="password" placeholder="Password" ng-model="navCtrl.credentials.password">
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input id="rememberMe" name="rememberMe" type="checkbox" ng-bind="loginCtrl.user.rememberMe">
+                                    <input id="rememberMe" name="rememberMe" type="checkbox" ng-bind="navCtrl.credentials.rememberMe">
                                     Remember Me
                                 </label>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-default" ng-click="loginCtrl.login()">Sign In</button>
+                                <button type="submit" class="btn btn-primary">Sign In</button>
                             </div>
                         </form>
                     </div>
                 </li>
 
-                <li ng-show="loginCtrl.isAuthenticated()">
-                    <a ng-click="loginCtrl.logout()" role="button">
+                <li ng-show="authenticated">
+                    <a ng-click="navCtrl.logout()" role="button">
                         <span class="glyphicon glyphicon-log-out"></span>
                         Log Out
                     </a>
@@ -92,11 +97,11 @@
 </div>
 
 
-<script src="/bower_components/angular/angular.js"></script>
-<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-<script src="/bower_components/angular-messages/angular-messages.js"></script>
-<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="/bower_components/ui-navbar/release/js/ui-navbar.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ui-navbar/release/js/ui-navbar.js"></script>
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -104,8 +109,7 @@
 <![endif]-->
 
 <script src="js/wxl-app.js"></script>
-<script src="js/controllers/login-controller.js"></script>
-<script src="js/controllers/navigation-controller.js"></script>
+<script src="views/home/navigation-controller.js"></script>
 
 <script src="views/home/home-controller.js"></script>
 <script src="views/dashboard/dashboard-controller.js"></script>

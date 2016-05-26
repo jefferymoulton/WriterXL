@@ -29,7 +29,7 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
 });
 
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
+app.use(favicon(__dirname + '/static/img/favicon.ico'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
 
 //app.set('view engine', 'html');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use('/bower_components', express.static(path.join(__dirname + '/bower_components')));
 
 // Set up the routes
@@ -55,7 +55,7 @@ app.use('/api', api);
 app.use('/user', user);
 
 app.get('/[^\.]+$', function(req, res){
-    res.set('Content-Type', 'text/html').sendfile(__dirname + '/public/index.html');
+    res.set('Content-Type', 'text/html').sendfile(__dirname + '/static/index.html');
 });
 
 // catch 404 and forward to error handler

@@ -6,26 +6,28 @@ var wxlApp = angular.module('wxlApp', [
 ]);
 
 wxlApp.config(
-    function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'views/home/home.html',
+                templateUrl: '../views/home/home.html',
                 controller: 'HomeController'
             })
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard/dashboard.html',
+                templateUrl: '../views/dashboard/dashboard.html',
                 controller: 'DashboardController'
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'views/signup/signup.html',
+                templateUrl: '../views/signup/signup.html',
                 controller: 'SignupController'
             });
+
+        $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
         $locationProvider.html5Mode({
             enabled: true
